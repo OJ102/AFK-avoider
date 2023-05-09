@@ -3,6 +3,7 @@ import pyautogui as pgui
 import random
 import time
 import tkinter as tk
+from tkinter import ttk
 
 def ismoving():#Checks if the cursor is moving
     initial=pgui.position()
@@ -19,16 +20,28 @@ def ismoving():#Checks if the cursor is moving
 #Tkinter function to display a pop up to kill the script
 def popup():
     root=tk.Tk()
-    root.geometry("400x200")
+    root.geometry("300x150")
     root.title("AFK avoider")
+    root.resizable(False, False)
 
-    label=tk.Label(root,text="Are you back?",font=("times new roman",20))
+    label=tk.Label(root,text="Are you back?",font=("times new roman",15))
     label.pack(pady=20)
 
-    button1=tk.Button(root,text="Yes",font=("times new roman",20))
-    button1.pack(padx=10,pady=10)
-    button2=tk.Button(root,text="No",font=("times new roman",20))
-    button2.pack(padx=10,pady=10)
+    buttonframe=tk.Frame(root)
+    # buttonframe=ttk.Frame(root,padding=10)
+    buttonframe.columnconfigure(0,weight=1)
+    buttonframe.columnconfigure(1,weight=1)
+
+
+    button1=tk.Button(buttonframe,text="Yes",font=("times new roman",15),width=5)
+    button1.grid(row=0,column=0,ipadx=10)
+    button2=tk.Button(buttonframe,text="No",font=("times new roman",15),width=5)
+    button2.grid(row=0,column=1,ipadx=10)
+
+    
+
+    buttonframe.pack(fill="x")
+
     root.mainloop()
     
 
