@@ -42,11 +42,9 @@ def popup():
 
     buttonframe.pack(fill="x")
 
-    root.mainloop()
-    
+    root.mainloop()    
 
 popup()
-
 
 # while True:
 #     if ismoving():#Checks if the user is moving the mouse
