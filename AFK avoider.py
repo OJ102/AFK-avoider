@@ -19,19 +19,23 @@ def ismoving():#Checks if the cursor is moving
 
 #command function
 
-#Initializes
-root=tk.Tk()
+
 
 run=True
-def yes():
-    root.quit()
-    global run 
-    run = False
-
 
 
 #Tkinter function to display a pop up to kill the script
 def popup():
+    #Initializes
+    root=tk.Tk()
+
+    def yes():
+        root.destroy()
+        global run 
+        run = False
+
+    def no():
+        root.destroy()
 
     #Sets geometry and blocks resizing
     root.geometry("300x150")
@@ -48,17 +52,19 @@ def popup():
     buttonframe.columnconfigure(1,weight=1)
 
     #Adds 2 buttons yes and no to the grid
-    button1=tk.Button(buttonframe,text="Yes",font=("times new roman",15),width=5,command=yes)
-    button1.grid(row=0,column=0,ipadx=10)
-    button2=tk.Button(buttonframe,text="No",font=("times new roman",15),width=5,command=root.destroy)
-    button2.grid(row=0,column=1,ipadx=10)
+    Yes_Button=tk.Button(buttonframe,text="Yes",font=("times new roman",15),width=5,command=yes)
+    Yes_Button.grid(row=0,column=0,ipadx=10)
+    No_Button=tk.Button(buttonframe,text="No",font=("times new roman",15),width=5,command=no)
+    No_Button.grid(row=0,column=1,ipadx=10)
 
     #Puts the grid on to the root window
     buttonframe.pack(fill="x")
 
+    cancel_id = root.after(5000, root.destroy)
+
     #Displays the root window
     root.mainloop()    
-
+    
 
 
 while run:
