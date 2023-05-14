@@ -77,9 +77,9 @@ class window:
         self.buttonframe.pack(fill="x")
 
         #Destroy after feature
+        Secs_To_Destroy=5000
+        self.Destroy_After= self.root.after(Secs_To_Destroy, self.root.destroy)
 
-        self.Secs_To_Destroy=time.sleep(5)        
-        self.Destroy_After=self.root.after(self.Secs_To_Destroy, self.root.destroy)  
 
         #Display the root window
         self.root.mainloop()
