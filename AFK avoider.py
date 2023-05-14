@@ -48,13 +48,6 @@ class mouse:
 
 #Tkinter function to display a pop up to kill the script
 class window:
-    def yes(self):
-        self.root.destroy()
-        global run 
-        run = False
-
-    def no(self):
-        self.root.destroy()   
 
     def __init__(self) -> None:
         #Initializes
@@ -75,21 +68,34 @@ class window:
         self.buttonframe.columnconfigure(1,weight=1)
 
         #Adds 2 buttons yes and no to the grid
-        self.Yes_Button=tk.Button(self.buttonframe,text="Yes",font=("times new roman",15),width=5,command=self.yes())
+        self.Yes_Button=tk.Button(self.buttonframe,text="Yes",font=("times new roman",15),width=5,command=self.yes)
         self.Yes_Button.grid(row=0,column=0,ipadx=10)
-        self.No_Button=tk.Button(self.buttonframe,text="No",font=("times new roman",15),width=5,command=self.no())
+        self.No_Button=tk.Button(self.buttonframe,text="No",font=("times new roman",15),width=5,command=self.no)
         self.No_Button.grid(row=0,column=1,ipadx=10)
 
         #Puts the grid on to the root window
         self.buttonframe.pack(fill="x")
 
         #Destroy after feature
-        self.Secs_To_Destroy=5000
-        self.Destroy_After= self.root.after(self.Secs_To_Destroy, self.root.destroy)
+        Start_Time=time.time()
+        Time_Passed=Start_Time-time.time()
+        Secs_To_Destroy=5
+        
+        if Time_Passed>=Secs_To_Destroy:
+            self.Destroy_After=self.root.after(self.Secs_To_Destroy, self.root.destroy)  
 
         #Display the root window
-        self.root.mainloop()   
+        self.root.mainloop()
 
+ 
+    
+    def yes(self):
+        self.root.destroy()
+        global run 
+        run = False
+
+    def no(self):
+        self.root.destroy()   
 
 
 
