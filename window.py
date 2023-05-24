@@ -5,6 +5,7 @@ from tkinter import ttk
 
 
 class Window:
+    loop=True
     def __init__(self):
         # Initializes
         self.root = tk.Tk()
@@ -58,9 +59,9 @@ class Window:
 
     def yes(self):
         self.root.destroy()
-        global run
-        run = False
+        Window.loop = False
 
 
     def no(self):
         self.root.destroy()
+

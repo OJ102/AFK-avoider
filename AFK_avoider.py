@@ -3,10 +3,10 @@ from window import Window
 
 
 
-run = True
+
 cursor = Mouse()
 
-while run:
+while Window.loop:
     cursor.random_pos()
     cursor.move_to()
 
